@@ -1,0 +1,16 @@
+name: NPM Publish
+
+on:
+  workflow_dispatch
+  release:
+    types: [created, published, prereleased, unpublished, released]
+
+jobs:
+  print-username:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print hello world
+        run: echo "hello world"
+      - name: Print the input name to STDOUT
+        run: echo The release type is ${{ github.event.types }}
