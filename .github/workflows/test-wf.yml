@@ -1,9 +1,9 @@
 name: NPM Publish
 
 on:
-  workflow_dispatch:
   release:
     types: [created, published, prereleased, unpublished, released]
+  workflow_dispatch:
 
 jobs:
   print-username:
