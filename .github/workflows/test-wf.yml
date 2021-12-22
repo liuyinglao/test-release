@@ -14,9 +14,12 @@ jobs:
         run: echo "hello world"
       - name: Print the input name to STDOUT
         run: echo "The ${{ github.event_name }} type is ${{ github.event.action }}. Pre-release is ${{ ! github.event.release.prerelease }}"
-      - name: only print if pre-release
-        run : echo "it is pre-release"
-        if: github.event.release.prerelease
-      - name: only print if not pre-release
-        run : echo "it is not pre-release"
-        if: "!github.event.release.prerelease"
+      - name: only print if pure pre-release
+        run : echo "it is pure pre-release"
+        if: github.event.release.prerelease && github.event_name == 'published'
+      - name: only print if pure release
+        run : echo "it is pure release"
+        if: "!github.event.release.prerelease && github.event_name == 'published"
+      - name: only print if from pre-release to release
+        run : echo "it is from pre-release to release"
+        if: github.event_name == 'released'
