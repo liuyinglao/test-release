@@ -9,6 +9,7 @@ jobs:
   print-username:
     runs-on: ubuntu-latest
 
+
     steps:
       - name: Print hello world
         run: echo "hello world"
@@ -16,10 +17,7 @@ jobs:
         run: echo "The ${{ github.event_name }} type is ${{ github.event.action }}. Pre-release is ${{ ! github.event.release.prerelease }}"
       - name: only print if pure pre-release
         run : echo "it is pure pre-release"
-        if: github.event.release.prerelease && github.event_name == 'published'
+        if: github.event.action == 'published' && github.event.release.prerelease
       - name: only print if pure release
-        run : echo "it is pure release"
-        if: "!github.event.release.prerelease && github.event_name == 'published'"
-      - name: only print if from pre-release to release
-        run : echo "it is from pre-release to release"
-        if: github.event_name == 'released'
+        run : echo "it is pure release or from pre-release to release"
+        if: github.event.action == 'released'
