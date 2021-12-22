@@ -28,4 +28,4 @@ jobs:
         run : echo "it is pure release or from pre-release to release"
         if: github.event.release.prerelease == false
       - name: check commit hash
-      - run: echo $GITHUB_SHA
+        run: echo $GITHUB_SHA
