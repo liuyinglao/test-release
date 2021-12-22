@@ -19,7 +19,7 @@ jobs:
         if: github.event.release.prerelease && github.event_name == 'published'
       - name: only print if pure release
         run : echo "it is pure release"
-        if: "!github.event.release.prerelease && github.event_name == 'published"
+        if: "!github.event.release.prerelease && github.event_name == 'published'"
       - name: only print if from pre-release to release
         run : echo "it is from pre-release to release"
         if: github.event_name == 'released'
